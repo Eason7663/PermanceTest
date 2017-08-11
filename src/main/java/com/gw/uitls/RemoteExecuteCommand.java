@@ -127,8 +127,6 @@ public class RemoteExecuteCommand {
 			if(login()){
 				Session session= conn.openSession();//打开一个会话
 				session.execCommand(cmd);//执行命令
-//				session.startShell();
-//				session.waitForCondition(ChannelCondition.EXIT_STATUS, TIMEOUT);
 				result=processStdout(session.getStdout(),DEFAULTCHART);
 				//如果标准输出为空，说明脚本执行出错了
 				if(StringUtils.isBlank(result)){

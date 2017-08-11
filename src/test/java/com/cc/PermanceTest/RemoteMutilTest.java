@@ -21,11 +21,11 @@ public class RemoteMutilTest {
 //			e.printStackTrace();
 //		}
 //		
-		SSH2Util ssh2Util = new SSH2Util("10.15.107.181","root","111111","/");
-		ssh2Util.connectAndAuth();
-//		ssh2Util.uploadFile("D://cert_pub.pem", "/opt/testEason");
-		ssh2Util.execCommand("pwd", true);
-		ssh2Util.closeConnection();
+		SSH2Util ssh2Util = new SSH2Util("10.15.144.170","root","111111","/");
+//		ssh2Util.uploadFile(".//logs//log.log", "/opt/testEason");
+		ssh2Util.execCommand("cd /opt/apache-jmeter-2.12/bin; >agent.log; nohup ./jmeter-server -Djava.rmi.server.hostname=10.15.144.170 > agent.log 2>&1 & ", false);
+//		ssh2Util.closeConnection();
+		System.exit(0);
 	}
 
 }

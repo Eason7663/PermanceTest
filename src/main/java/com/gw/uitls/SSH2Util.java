@@ -1,9 +1,11 @@
 package com.gw.uitls;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import ch.ethz.ssh2.Connection;
@@ -569,7 +571,7 @@ public class SSH2Util{
     		if (isQuery)
     		{
     			try {
-    				session = connection[0].openSession();
+    				session = connection[0].openSession(); //打开会话
     				InputStream stdout = new StreamGobbler(session.getStdout());
     				BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
     				String content = null;
@@ -590,6 +592,7 @@ public class SSH2Util{
     				try {
 						session = conn.openSession();
 						session.execCommand(cmd);
+						System.out.println(processStdout(session.getStdout(), "UTF-8"));
 						session.close();
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -600,6 +603,32 @@ public class SSH2Util{
     	}
     	return sb.toString();
     }
+    
+    /**
+ 	* 解析脚本执行返回的结果集
+ 	* @author Ickes
+ 	* @param in 输入流对象
+ 	* @param charset 编码
+ 	* @since V0.1
+ 	* @return
+ 	* 		以纯文本的格式返回
+ 	*/
+ 	private String processStdout(InputStream in, String charset){
+ 		InputStream stdout = new StreamGobbler(in);
+ 		StringBuffer buffer = new StringBuffer();;
+ 		try {
+ 			BufferedReader br = new BufferedReader(new InputStreamReader(stdout,charset));
+ 			String line=null;
+ 			while((line=br.readLine()) != null){
+ 				buffer.append(line+"\n");
+ 			}
+ 		} catch (UnsupportedEncodingException e) {
+ 			e.printStackTrace();
+ 		} catch (IOException e) {
+ 			e.printStackTrace();
+ 		}
+ 		return buffer.toString();
+ 	}
     
     /**
      * 关闭连接

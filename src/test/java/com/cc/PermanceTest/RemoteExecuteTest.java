@@ -22,9 +22,10 @@ public class RemoteExecuteTest {
 	public static void main(String[] args) {
 		RemoteExecuteCommand ret=new RemoteExecuteCommand("10.15.107.181", "root","111111");
 		//执行多条命令可以使用&&，&，|，||等shell的复合命令格式
-//		System.out.println(ret.execute("cd /opt/testEason&&pwd"));
+		System.out.println(ret.execute("cd /opt/testEason&&pwd"));
 //		logger.info("执行命令：\"cd /opt/dzhyun&&pwd\"");
-		ret.putFile("/log/log.log", "/opt/testEason");
+//		ret.putFile("/log/log.log", "/opt/testEason");
+		System.exit(0);
 	}
 
 }
