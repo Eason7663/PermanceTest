@@ -17,21 +17,13 @@ public class RemoteExecuteTest {
 		String result = rec.execute(jmeterStart);
 		logger.info("启动jmeter:" +  jmeterStart);
 		logger.info(result);
-		
 	}
+	
 	public static void main(String[] args) {
-		RemoteExecuteTest ret=new RemoteExecuteTest("10.15.107.181", "root","111111");
-		//执行命令
-//		System.out.println(rec.execute("ifconfig"));
-//		logger.info("执行命令ifconfig");
-		//执行脚本
-//		System.out.println(rec.execute("sh /opt/testEason/test.sh start"));
-		//这个方法与上面最大的区别就是，上面的方法，不管执行成功与否都返回，
-		//这个方法呢，如果命令或者脚本执行错误将返回空字符串
-//		System.out.println(rec.executeSuccess("ifconfig"));
-		ret.startJmeter("sh /opt/testEason/jmeter-agent.sh stop");
-		ret.startJmeter("sh /opt/testEason/jmeter-agent.sh status");
-		
+		RemoteExecuteCommand ret=new RemoteExecuteCommand("10.15.144.72", "root","111111");
+		//执行多条命令可以使用&&，&，|，||等shell的复合命令格式
+		System.out.println(ret.execute("cd /opt/dzhyun&&pwd"));
+		logger.info("执行命令：\"cd /opt/dzhyun&&pwd\"");
 	}
 
 }

@@ -4,7 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
 import org.apache.commons.lang.StringUtils;
 import org.omg.CORBA.TIMEOUT;
 
@@ -26,6 +30,7 @@ public class RemoteExecuteCommand {
 	private String ip;
 	private String userName;
 	private String userPwd;
+
 	
 	public RemoteExecuteCommand(String ip, String userName, String userPwd) {
 		this.ip = ip;
@@ -56,6 +61,49 @@ public class RemoteExecuteCommand {
 		}
 		return flg;
 	}
+	//执行多条命令
+	public String executeMutil(){
+		 String temp = "";
+		try {
+			if (login()) {
+				OutputStream in = null;
+				InputStream out = null;
+				Session session = conn.openSession();
+				session.requestDumbPTY();
+				session.startShell();
+				out = session.getStdout();
+				in = session.getStdin();
+				String shellCommand = "pwd \n";
+				in.write(shellCommand.getBytes());  
+		        in.flush();  
+
+		        //获取命令执行的结果  
+		        if (out.available() > 0) {  
+		            byte[] data = new byte[out.available()];  
+		            int nLen = out.read(data);  
+		              
+		            if (nLen < 0) {  
+		                throw new Exception("network error.");  
+		            }  
+		              
+		            //转换输出结果并打印出来  
+		            temp = new String(data, 0, nLen,"utf-8");  
+		        }
+		        in.close();
+		        out.close();
+				session.close();
+				conn.close();
+			}
+		} catch (IOException  e) {
+			e.printStackTrace();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+
+		}
+		return temp;
+	}
 	/**
 	 * @author Ickes
 	 * 远程执行shell脚本或者命令
@@ -71,9 +119,10 @@ public class RemoteExecuteCommand {
 			if(login()){
 				Session session= conn.openSession();//打开一个会话
 				session.execCommand(cmd);//执行命令
-				session.waitForCondition(ChannelCondition.EXIT_STATUS, TIMEOUT);
+//				session.startShell();
+//				session.waitForCondition(ChannelCondition.EXIT_STATUS, TIMEOUT);
 				result=processStdout(session.getStdout(),DEFAULTCHART);
-				//如果为得到标准输出为空，说明脚本执行出错了
+				//如果标准输出为空，说明脚本执行出错了
 				if(StringUtils.isBlank(result)){
 					result=processStdout(session.getStderr(),DEFAULTCHART);
 				}
@@ -122,7 +171,7 @@ public class RemoteExecuteCommand {
 	* 		以纯文本的格式返回
 	*/
 	private String processStdout(InputStream in, String charset){
-		InputStream    stdout = new StreamGobbler(in);
+		InputStream stdout = new StreamGobbler(in);
 		StringBuffer buffer = new StringBuffer();;
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(stdout,charset));
