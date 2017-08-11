@@ -17,7 +17,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Java/workspace/sh/ShFast/ShFast/lib/ganymed-ssh2-build210.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/ShFast-170303/lib/ganymed-ssh2-build210.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

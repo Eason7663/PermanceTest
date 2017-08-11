@@ -1,21 +1,29 @@
 package com.gw.uitls;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.omg.CORBA.TIMEOUT;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
 import ch.ethz.ssh2.ChannelCondition;
 import ch.ethz.ssh2.Connection;
+import ch.ethz.ssh2.SCPClient;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
+//import ch.ethz.ssh2.SCPOutputStream;
 
 /**
  * 远程执行linux的shell script
@@ -134,7 +142,23 @@ public class RemoteExecuteCommand {
 		}
 		return result;
 	}
-	
+	//上传文件
+	public void putFile(String localFiles, String remoteDirectory) {
+		try {
+			if (login()) {
+				File file = new File(localFiles);
+				if (file.isDirectory()) {
+					throw new RuntimeException(localFiles + "  is not a file");
+				}
+				String fileName = file.getName();
+				SCPClient scpClient = new SCPClient(conn);
+				scpClient.put(fileName,remoteDirectory,"0644");
+				conn.close();
+			}			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 	
 	/**
 	 * @author Ickes
