@@ -25,7 +25,7 @@ public class RemoteExecuteTest {
 		System.out.println(ret.execute("cd /opt/testEason&&pwd"));
 //		logger.info("执行命令：\"cd /opt/dzhyun&&pwd\"");
 //		ret.putFile("/log/log.log", "/opt/testEason");
-		System.exit(0);
+//		System.exit(0);
 	}
 
 }
