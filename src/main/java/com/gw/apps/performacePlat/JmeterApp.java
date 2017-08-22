@@ -3,6 +3,7 @@ package com.gw.apps.performacePlat;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 import com.gw.uitls.RemoteExecuteCommand;
@@ -23,11 +24,10 @@ public class JmeterApp {
 		
 		RemoteExecuteCommand ret3 = new RemoteExecuteCommand("10.15.144.81", "root","111111");
 		ret3.setCmd(cmd);
-		es.submit(ret1);
+		Future<?> task = es.submit(ret1);
 		es.submit(ret2);
 		es.submit(ret3);
 		es.shutdown();
-		
 	}
 
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JmeterConf>
+    <Servers>
+        <Slave>
+            <ip>10.15.144.170</ip>
+            <username>root</username>
+            <password>111111</password>
+        </Slave>
+        <Slave>
+            <ip>10.15.144.171</ip>
+            <username>root</username>
+            <password>dzhinternet</password>
+        </Slave>
+        <Slave>
+            <ip>10.15.107.203</ip>
+            <username>root</username>
+            <password>wwdzh116</password>
+        </Slave>
+        <Slave>
+            <ip>10.15.107.189</ip>
+            <username>root</username>
+            <password>111111</password>
+        </Slave>
+        <Master>
+            <ip>10.15.107.181</ip>
+            <username>root</username>
+            <password>111111</password>
+        </Master>
+    </Servers>
+    <Command>
+        <StartJmeter>"cd /opt/apache-jmeter-2.12/bin&amp;&amp;"</StartJmeter>
+        <StopJmeter>"TBD"</StopJmeter>
+        <UploadFile></UploadFile>
+        <DownloadFile></DownloadFile>
+    </Command>
+</JmeterConf>

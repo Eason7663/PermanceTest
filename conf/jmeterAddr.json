@@ -1,0 +1,30 @@
+{
+  "Slave": [
+    {
+      "ip": "10.15.144.170",
+      "username": "root",
+      "password": "111111"
+    },
+    {
+      "ip": "10.15.144.171",
+      "username": "root",
+      "password": "dzhinternet"
+    },
+    {
+      "ip": "10.15.107.203",
+      "username": "root",
+      "password": "wwdzh116"
+    },
+    {
+      "ip": "10.15.107.189",
+      "username": "root",
+      "password": "111111"
+    }
+  ],
+  "Master": 
+    {
+      "ip": "10.15.107.181",
+      "username": "root",
+      "password": "111111"
+    }
+}
