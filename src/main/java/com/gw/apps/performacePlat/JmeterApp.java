@@ -4,13 +4,27 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 import com.gw.uitls.RemoteExecuteCommand;
 
 public class JmeterApp {
-	ArrayList<RemoteExecuteCommand> slaveList;
-	
+	private JmeterCluster jCluster;
+		
+	//constructor
+	public JmeterApp() {
+		// TODO Auto-generated constructor stub
+		
+	}
+	//constructor
+	public JmeterApp(String strPath) {
+		// TODO Auto-generated constructor stub
+		jCluster = new JmeterCluster(strPath);
+	}
+
+	public void startSlave(){
+		ExecutorService es = Executors.newFixedThreadPool(4);
+	}
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
