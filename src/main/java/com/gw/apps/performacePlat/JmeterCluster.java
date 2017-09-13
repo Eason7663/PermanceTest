@@ -6,14 +6,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.SSLException;
 
 import org.dom4j.*;   
 import org.dom4j.io.*;
 
 import com.gw.uitls.RemoteExecuteCommand;
 
-import sun.net.www.content.text.plain;
   
 public class JmeterCluster {
 	private String strPath;
@@ -63,10 +61,10 @@ public class JmeterCluster {
 			//启动jmeter CMD
 			String str = new String(command.get("StartJmeter"));
 			str = str.replace("$ip", ret.getIp());
-			System.out.println(str);
-			StringBuilder stringBuilder = new StringBuilder("cd /opt/apache-jmeter-2.12/bin; >agent.log; nohup ./jmeter-server -Djava.rmi.server.hostname=");
-			stringBuilder.append(ret.getIp());
-			stringBuilder.append(" > agent.log 2>&1 &");
+//			System.out.println(str);
+//			StringBuilder stringBuilder = new StringBuilder("cd /opt/apache-jmeter-2.12/bin; >agent.log; nohup ./jmeter-server -Djava.rmi.server.hostname=");
+//			stringBuilder.append(ret.getIp());
+//			stringBuilder.append(" > agent.log 2>&1 &");
 			
 			
 			ret.setCmd(str);
@@ -124,7 +122,7 @@ public class JmeterCluster {
 	//下载测试报告
 	public void	getReport() {
 		RemoteExecuteCommand ret = new RemoteExecuteCommand(master.getIP(), master.getUsername(), master.getPassword());
-		ret.
+		ret.getFile("/opt/apache-jmeter-2.12/bin/DMBLquanliang.jtl", ".//dat//");
 	}
 
  
@@ -216,9 +214,10 @@ public static void main(String args[]) {
 	jmeterAddr.startSlaveJmeter();
 	//启动调度机
 	jmeterAddr.startMaster();
-	
+	//从服务器读取测试报告
+	jmeterAddr.getReport();
 	//停止负载机
-//	jmeterAddr.stopSlaveJmeter();
+	jmeterAddr.stopSlaveJmeter();
 
 	System.exit(0);
 }   

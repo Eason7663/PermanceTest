@@ -36,7 +36,7 @@
         <StartJmeter>cd /opt/apache-jmeter-2.12/bin; >agent.log; nohup ./jmeter-server -Djava.rmi.server.hostname=$ip > agent.log 2>&amp;1 &amp;</StartJmeter>
         <StopJmeter>ps -aef | grep jmeter |grep -v grep | awk '{print $2}' | xargs kill -9</StopJmeter>
 		<StartMaster>cd /opt/apache-jmeter-2.12/bin; >test.log; nohup ./jmeter -n -t ./DMBLquanliang.jmx -R 10.15.144.170,10.15.144.173 -l ./DMBLquanliang.jtl > test.log 2>&amp;1 &amp;</StartMaster>
-        <UploadFile>""</UploadFile>
-        <DownloadFile>""</DownloadFile>
+        <UploadFile></UploadFile>
+        <DownloadFile></DownloadFile>
     </Command>
 </JmeterConf>

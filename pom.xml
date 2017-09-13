@@ -14,6 +14,23 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
+  <dependency>
+  <groupId>com.google.protobuf</groupId>
+  <artifactId>protobuf-java</artifactId>
+  <version>2.6.1</version>
+</dependency>
+<dependency>
+  <groupId>com.google.protobuf</groupId>
+  <artifactId>protobuf-java</artifactId>
+  <version>2.6.1</version>
+  <classifier>sources</classifier>
+</dependency>
+<dependency>
+  <groupId>com.google.protobuf</groupId>
+  <artifactId>protobuf-java</artifactId>
+  <version>2.6.1</version>
+  <classifier>javadoc</classifier>
+</dependency>
   <dependency>  
     <groupId>org.slf4j</groupId>  
     <artifactId>slf4j-api</artifactId>  
@@ -60,6 +77,11 @@
     	<version>build210</version>
     	<classifier>sources</classifier>
     </dependency>
+        <dependency>
+    	<groupId>ch.ethz.ganymed</groupId>
+    	<artifactId>ganymed-ssh2</artifactId>
+    	<version>build210</version>
+    </dependency>
     <dependency>
   <groupId>dom4j</groupId>
   <artifactId>dom4j</artifactId>
@@ -70,6 +92,40 @@
   <artifactId>dom4j</artifactId>
   <version>1.6.1</version>
   <classifier>sources</classifier>
+</dependency>
+<dependency>
+  <groupId>redis.clients</groupId>
+  <artifactId>jedis</artifactId>
+  <version>2.7.0</version>
+  </dependency>
+  <dependency>
+  <groupId>redis.clients</groupId>
+  <artifactId>jedis</artifactId>
+  <version>2.7.0</version>
+  <classifier>javadoc</classifier>
+</dependency>
+<dependency>
+  <groupId>redis.clients</groupId>
+  <artifactId>jedis</artifactId>
+  <version>2.7.0</version>
+  <classifier>sources</classifier>
+</dependency>
+<dependency>
+  <groupId>commons-pool</groupId>
+  <artifactId>commons-pool</artifactId>
+  <version>1.5.7</version>
+</dependency>
+<dependency>
+  <groupId>commons-pool</groupId>
+  <artifactId>commons-pool</artifactId>
+  <version>1.5.7</version>
+  <classifier>sources</classifier>
+</dependency>
+<dependency>
+  <groupId>commons-pool</groupId>
+  <artifactId>commons-pool</artifactId>
+  <version>1.5.7</version>
+  <classifier>javadoc</classifier>
 </dependency>
   </dependencies>
   

@@ -14,6 +14,8 @@ import ch.ethz.ssh2.SCPClient;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
 
+
+
 /**
  * 远程执行linux的shell script
  * 
@@ -142,6 +144,19 @@ public class RemoteExecuteCommand implements Runnable {
 				String fileName = file.getName();
 				SCPClient scpClient = new SCPClient(conn);
 				scpClient.put(fileName, remoteDirectory, "0644");
+				conn.close();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	//下载文件
+	// 上传文件
+	public void getFile(String remoteFile, String localTargetDirectory) {
+		try {
+			if (login()) {
+				SCPClient scpClient = new SCPClient(conn);
+				scpClient.get(remoteFile, localTargetDirectory);
 				conn.close();
 			}
 		} catch (Exception e) {
