@@ -1,5 +1,11 @@
 package com.protobuftest.protobuf;
  
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
@@ -105,18 +111,34 @@ public static void test9s0() throws UnsupportedEncodingException {
 	} catch (InvalidProtocolBufferException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+	}finally {
+		jedis.close();
 	}
 
 }
 
-public static void testAq0() throws UnsupportedEncodingException {
+public static void testAq0() throws IOException {
 	@SuppressWarnings("resource")
 	Jedis jedis2 = new Jedis("10.15.89.120", 7000);
-	System.out.println(jedis2.lrange("Aq0板块热点轮动策略", 1,1).size());
-	System.out.println(jedis2.lrange("Aq0板块热点轮动策略", 1,1).get(0).getBytes("utf-8").length);
+	System.out.println(jedis2.lrange("Aq0板块热点轮动策略", 1,1).get(0));
+//	try {
+//		FileWriter fWriter = new FileWriter(new File(".//dat//test.txt"));
+//		fWriter.write(jedis2.lrange("Aq0板块热点轮动策略", 1,1).get(0));
+//		fWriter.close();
+//	} catch (IOException e1) {
+//		// TODO Auto-generated catch block
+//		e1.printStackTrace();
+//	}
+	
+
+	
+//	System.out.println(jedis2.lrange("Aq0板块热点轮动策略", 1,1).get(0).getBytes("utf-8").length);
 	try {
-//		StkPoolOuput stockPool = DzhyunStockpool.StkPoolOuput.parseFrom(jedis.lrange("Aq0板块热点轮动策略", 0, 0).get(0).getBytes("utf-8"));
+		FileInputStream fi = new FileInputStream(".//dat//test.txt");
 		byte[] bb = jedis2.lrange("Aq0板块热点轮动策略", 1, 1).get(0).getBytes("utf-8");
+		fi.read(bb);
+//		StkPoolOuput stockPool = DzhyunStockpool.StkPoolOuput.parseFrom(jedis.lrange("Aq0板块热点轮动策略", 0, 0).get(0).getBytes("utf-8"));
+//		byte[] bb = jedis2.lrange("Aq0板块热点轮动策略", 1, 1).get(0).getBytes("utf-8");
 		StkPoolOuput stockPool = DzhyunStockpool.StkPoolOuput.parseFrom(bb);
 		
 //		System.out.println(stockPool.getStkCount());
@@ -126,6 +148,8 @@ public static void testAq0() throws UnsupportedEncodingException {
 	} catch (InvalidProtocolBufferException e) {
 		 //TODO Auto-generated catch block
 		e.printStackTrace();
+	}finally {
+		jedis2.close();
 	}
 }
 
@@ -136,7 +160,7 @@ public static void testAq0() throws UnsupportedEncodingException {
 public static void main(String[] args) {
 	try {
 		TestPb.testAq0();
-	} catch (UnsupportedEncodingException e) {
+	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
