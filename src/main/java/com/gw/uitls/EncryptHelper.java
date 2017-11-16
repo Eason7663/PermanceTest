@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.crypto.Cipher;
 
@@ -144,6 +146,24 @@ public class EncryptHelper {
     }
     
     
+    /**
+     * @Description 去除字符串中的回车，换行符，制表符
+     * @param str
+     * @return
+     * @return_type String
+     * @author Eason
+     * @date 2017年11月16日 下午5:44:12  
+     */
+    public static String replaceBlank(String str) {
+        String dest = "";
+        if (str!=null) {
+            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+            Matcher m = p.matcher(str);
+            dest = m.replaceAll("");
+        }
+        return dest;
+    }
+    
 	   public static String encrypt(String imtoken,  String content) {
 	        try {
 	        	String key = GetkeyBytes(imtoken).toString();
@@ -166,7 +186,7 @@ public class EncryptHelper {
 	            byte[] encrypted = cipher.doFinal(byte_encode);
 //	            System.out.println(Arrays.toString(encrypted));
 	            System.out.println("加密前initVector：" + initVector);
-	            byte[] AES_encrypted =unitByteArray(initVector.getBytes("UTF-8"), encrypted);
+	            byte[] AES_encrypted = unitByteArray(initVector.getBytes("UTF-8"), encrypted);
 	            String AES_encode=new String(new BASE64Encoder().encode(AES_encrypted));
 	            return AES_encode;
 	        } catch (Exception ex) {
@@ -183,8 +203,8 @@ public class EncryptHelper {
 		try {
 			String imtoken = "M5V_1i0TUeRvOlm1qWW90O1F9MulpR0=";
 			String content = fileReaders.ReadFile("c:\\content.txt");
-			String newContent = content.replaceAll("\"", "\\\"");
-			System.out.println(newContent);
+//			String newContent = content.replaceAll("\"", "\\\"");
+			System.out.println(content);
 			System.out.println(EncryptHelper.encrypt(imtoken, content));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
