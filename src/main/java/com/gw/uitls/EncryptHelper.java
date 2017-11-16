@@ -191,9 +191,6 @@ public class EncryptHelper {
 			e.printStackTrace();
 		}
 		
-
-		
-		
 	}
 
 }
