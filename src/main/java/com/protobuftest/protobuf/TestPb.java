@@ -1,5 +1,6 @@
 package com.protobuftest.protobuf;
  
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,6 +21,7 @@ import com.dzhyun.proto.DzhyunStockpool.StkPoolOuput;
 import com.dzhyun.proto.DzhyunStockpoolincome;
 import com.dzhyun.proto.DzhyunStockpoolincome.StockPoolInfo;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.ExtensionRegistryLite;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.protobuftest.protobuf.PersonProbuf;
 import com.protobuftest.protobuf.PersonProbuf.Person;
@@ -29,7 +31,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 import redis.clients.jedis.Jedis;
  
 public class TestPb {
-public void test9t0() {
+public static void test9t0() {
 	// TODO Auto-generated method stub
 		PersonProbuf.Person.Builder builder = PersonProbuf.Person.newBuilder();
 		builder.setEmail("kkk@email.com");
@@ -104,7 +106,7 @@ public static void test9s0() throws UnsupportedEncodingException {
 //	System.out.println(jedis.lrange("9s0多周期共振策略", 0, 0));
 	try {
 		StockPoolInfo stockPoolnfo = DzhyunStockpoolincome.StockPoolInfo.parseFrom(jedis.lrange("9s0多周期共振策略", 0, 0).get(0).getBytes("utf-8"));
-		stockPoolnfo.getTotalIncome();
+
 		System.out.println(stockPoolnfo.getName());
 		System.out.println(stockPoolnfo.getTotalIncome());
 		System.out.println(stockPoolnfo.getRatio());
@@ -117,34 +119,52 @@ public static void test9s0() throws UnsupportedEncodingException {
 
 }
 
+public static void writeTxt(String str) {
+		try {
+		FileWriter fWriter = new FileWriter(new File(".//dat//test.txt"));
+		fWriter.write(str);
+		fWriter.close();
+	} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+}
+
 public static void testAq0() throws IOException {
 	@SuppressWarnings("resource")
-	Jedis jedis2 = new Jedis("10.15.89.120", 7000);
-	System.out.println(jedis2.lrange("Aq0板块热点轮动策略", 1,1).get(0));
-//	try {
-//		FileWriter fWriter = new FileWriter(new File(".//dat//test.txt"));
-//		fWriter.write(jedis2.lrange("Aq0板块热点轮动策略", 1,1).get(0));
-//		fWriter.close();
-//	} catch (IOException e1) {
-//		// TODO Auto-generated catch block
-//		e1.printStackTrace();
-//	}
+	Jedis jedis2 = new Jedis("10.15.208.121", 7000);
+//	System.out.println(jedis2.lrange("Aq0板块热点轮动策略", 1,1).get(0));
+//	String  str = jedis2.lrange("Aq0板块热点轮动策略", 1,1).get(0);
+//	writeTxt(str);
 	
 
 	
 //	System.out.println(jedis2.lrange("Aq0板块热点轮动策略", 1,1).get(0).getBytes("utf-8").length);
 	try {
-		FileInputStream fi = new FileInputStream(".//dat//test.txt");
-		byte[] bb = jedis2.lrange("Aq0板块热点轮动策略", 1, 1).get(0).getBytes("utf-8");
-		fi.read(bb);
-//		StkPoolOuput stockPool = DzhyunStockpool.StkPoolOuput.parseFrom(jedis.lrange("Aq0板块热点轮动策略", 0, 0).get(0).getBytes("utf-8"));
+//		File file = new File(".//dat//test.txt");
+//		FileInputStream fi = new FileInputStream(file);
+//		Long filelength = file.length();
+//		byte[] bb = new byte[filelength.intValue()];
+//		fi.read(bb);
+//		StkPoolOuput stockPool = DzhyunStockpool.StkPoolOuput.parseFrom(jedis2.lrange("Aq0板块热点轮动策略", 0, 0).get(0).getBytes("utf-8"));
+//		StringBuffer buffer = new StringBuffer(jedis2.lrange("Aq0板块热点轮动策略", 1, 1).get(0));
+
 //		byte[] bb = jedis2.lrange("Aq0板块热点轮动策略", 1, 1).get(0).getBytes("utf-8");
-		StkPoolOuput stockPool = DzhyunStockpool.StkPoolOuput.parseFrom(bb);
+//		System.out.println(jedis2.get("D10板块热点轮动策略"));
 		
-//		System.out.println(stockPool.getStkCount());
-		System.out.println(stockPool.getCeWenShiJian());
+//		writeTxt(jedis2.lrange("Aq0多周期共振策略", 0, 0).get(0));
+		String str = jedis2.lrange("Aq0多周期共振策略", 0, 0).get(0);
 		
-//		stockPool.getPooldataList().get(0).getStk(0).getObj();
+		
+//		new ByteArrayOutputStream().toByteArray();
+		byte[] bb = str.getBytes("utf-8");
+//		writeTxt(str);
+//		DzhyunStockpool.StkPoolOuput stockPoolOut = DzhyunStockpool.StkPoolOuput.parseFrom(bb);
+		DzhyunStockpool.StkPoolOuput stockPoolOut = 
+				DzhyunStockpool.StkPoolOuput.parseFrom(bb);
+
+		System.out.println(stockPoolOut.getCeWenShiJian());
+		System.out.println(stockPoolOut.getSerializedSize());
 	} catch (InvalidProtocolBufferException e) {
 		 //TODO Auto-generated catch block
 		e.printStackTrace();
@@ -158,12 +178,14 @@ public static void testAq0() throws IOException {
  * @param args
  */
 public static void main(String[] args) {
-	try {
-		TestPb.testAq0();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+		try {
+//			TestPb.test9s0();
+			TestPb.testAq0();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//	TestPb.test9t0();
  
 }
  

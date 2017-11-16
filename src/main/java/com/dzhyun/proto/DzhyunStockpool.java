@@ -8,10 +8,10 @@ public final class DzhyunStockpool {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface StockOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:dzhyun.Stock)
-      com.google.protobuf.MessageOrBuilder {
+  public interface StockOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
 
+    // required int64 Price = 1;
     /**
      * <code>required int64 Price = 1;</code>
      */
@@ -21,6 +21,7 @@ public final class DzhyunStockpool {
      */
     long getPrice();
 
+    // required string Time = 2;
     /**
      * <code>required string Time = 2;</code>
      */
@@ -35,6 +36,7 @@ public final class DzhyunStockpool {
     com.google.protobuf.ByteString
         getTimeBytes();
 
+    // required string Obj = 3;
     /**
      * <code>required string Obj = 3;</code>
      */
@@ -53,9 +55,8 @@ public final class DzhyunStockpool {
    * Protobuf type {@code dzhyun.Stock}
    */
   public static final class Stock extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:dzhyun.Stock)
-      StockOrBuilder {
+      com.google.protobuf.GeneratedMessage
+      implements StockOrBuilder {
     // Use Stock.newBuilder() to construct.
     private Stock(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -107,15 +108,13 @@ public final class DzhyunStockpool {
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
-              time_ = bs;
+              time_ = input.readBytes();
               break;
             }
             case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000004;
-              obj_ = bs;
+              obj_ = input.readBytes();
               break;
             }
           }
@@ -158,6 +157,7 @@ public final class DzhyunStockpool {
     }
 
     private int bitField0_;
+    // required int64 Price = 1;
     public static final int PRICE_FIELD_NUMBER = 1;
     private long price_;
     /**
@@ -173,6 +173,7 @@ public final class DzhyunStockpool {
       return price_;
     }
 
+    // required string Time = 2;
     public static final int TIME_FIELD_NUMBER = 2;
     private java.lang.Object time_;
     /**
@@ -215,6 +216,7 @@ public final class DzhyunStockpool {
       }
     }
 
+    // required string Obj = 3;
     public static final int OBJ_FIELD_NUMBER = 3;
     private java.lang.Object obj_;
     /**
@@ -265,8 +267,7 @@ public final class DzhyunStockpool {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
+      if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasPrice()) {
         memoizedIsInitialized = 0;
@@ -399,9 +400,8 @@ public final class DzhyunStockpool {
      * Protobuf type {@code dzhyun.Stock}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:dzhyun.Stock)
-        com.dzhyun.proto.DzhyunStockpool.StockOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.dzhyun.proto.DzhyunStockpool.StockOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.dzhyun.proto.DzhyunStockpool.internal_static_dzhyun_Stock_descriptor;
@@ -548,6 +548,7 @@ public final class DzhyunStockpool {
       }
       private int bitField0_;
 
+      // required int64 Price = 1;
       private long price_ ;
       /**
        * <code>required int64 Price = 1;</code>
@@ -580,6 +581,7 @@ public final class DzhyunStockpool {
         return this;
       }
 
+      // required string Time = 2;
       private java.lang.Object time_ = "";
       /**
        * <code>required string Time = 2;</code>
@@ -593,12 +595,9 @@ public final class DzhyunStockpool {
       public java.lang.String getTime() {
         java.lang.Object ref = time_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            time_ = s;
-          }
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          time_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -656,6 +655,7 @@ public final class DzhyunStockpool {
         return this;
       }
 
+      // required string Obj = 3;
       private java.lang.Object obj_ = "";
       /**
        * <code>required string Obj = 3;</code>
@@ -669,12 +669,9 @@ public final class DzhyunStockpool {
       public java.lang.String getObj() {
         java.lang.Object ref = obj_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            obj_ = s;
-          }
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          obj_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -743,10 +740,10 @@ public final class DzhyunStockpool {
     // @@protoc_insertion_point(class_scope:dzhyun.Stock)
   }
 
-  public interface StkPoolOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:dzhyun.StkPool)
-      com.google.protobuf.MessageOrBuilder {
+  public interface StkPoolOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
 
+    // required string Text = 1;
     /**
      * <code>required string Text = 1;</code>
      */
@@ -761,6 +758,7 @@ public final class DzhyunStockpool {
     com.google.protobuf.ByteString
         getTextBytes();
 
+    // repeated .dzhyun.Stock Stk = 2;
     /**
      * <code>repeated .dzhyun.Stock Stk = 2;</code>
      */
@@ -789,9 +787,8 @@ public final class DzhyunStockpool {
    * Protobuf type {@code dzhyun.StkPool}
    */
   public static final class StkPool extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:dzhyun.StkPool)
-      StkPoolOrBuilder {
+      com.google.protobuf.GeneratedMessage
+      implements StkPoolOrBuilder {
     // Use StkPool.newBuilder() to construct.
     private StkPool(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -838,9 +835,8 @@ public final class DzhyunStockpool {
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              text_ = bs;
+              text_ = input.readBytes();
               break;
             }
             case 18: {
@@ -894,6 +890,7 @@ public final class DzhyunStockpool {
     }
 
     private int bitField0_;
+    // required string Text = 1;
     public static final int TEXT_FIELD_NUMBER = 1;
     private java.lang.Object text_;
     /**
@@ -936,6 +933,7 @@ public final class DzhyunStockpool {
       }
     }
 
+    // repeated .dzhyun.Stock Stk = 2;
     public static final int STK_FIELD_NUMBER = 2;
     private java.util.List<com.dzhyun.proto.DzhyunStockpool.Stock> stk_;
     /**
@@ -978,8 +976,7 @@ public final class DzhyunStockpool {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
+      if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasText()) {
         memoizedIsInitialized = 0;
@@ -1103,9 +1100,8 @@ public final class DzhyunStockpool {
      * Protobuf type {@code dzhyun.StkPool}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:dzhyun.StkPool)
-        com.dzhyun.proto.DzhyunStockpool.StkPoolOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.dzhyun.proto.DzhyunStockpool.StkPoolOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.dzhyun.proto.DzhyunStockpool.internal_static_dzhyun_StkPool_descriptor;
@@ -1272,6 +1268,7 @@ public final class DzhyunStockpool {
       }
       private int bitField0_;
 
+      // required string Text = 1;
       private java.lang.Object text_ = "";
       /**
        * <code>required string Text = 1;</code>
@@ -1285,12 +1282,9 @@ public final class DzhyunStockpool {
       public java.lang.String getText() {
         java.lang.Object ref = text_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            text_ = s;
-          }
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          text_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -1348,6 +1342,7 @@ public final class DzhyunStockpool {
         return this;
       }
 
+      // repeated .dzhyun.Stock Stk = 2;
       private java.util.List<com.dzhyun.proto.DzhyunStockpool.Stock> stk_ =
         java.util.Collections.emptyList();
       private void ensureStkIsMutable() {
@@ -1489,8 +1484,7 @@ public final class DzhyunStockpool {
           java.lang.Iterable<? extends com.dzhyun.proto.DzhyunStockpool.Stock> values) {
         if (stkBuilder_ == null) {
           ensureStkIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, stk_);
+          super.addAll(values, stk_);
           onChanged();
         } else {
           stkBuilder_.addAllMessages(values);
@@ -1599,10 +1593,10 @@ public final class DzhyunStockpool {
     // @@protoc_insertion_point(class_scope:dzhyun.StkPool)
   }
 
-  public interface StkPoolOuputOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:dzhyun.StkPoolOuput)
-      com.google.protobuf.MessageOrBuilder {
+  public interface StkPoolOuputOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
 
+    // required string CeWenShiJian = 1;
     /**
      * <code>required string CeWenShiJian = 1;</code>
      */
@@ -1617,6 +1611,7 @@ public final class DzhyunStockpool {
     com.google.protobuf.ByteString
         getCeWenShiJianBytes();
 
+    // repeated .dzhyun.StkPool Pooldata = 2;
     /**
      * <code>repeated .dzhyun.StkPool Pooldata = 2;</code>
      */
@@ -1645,9 +1640,8 @@ public final class DzhyunStockpool {
    * Protobuf type {@code dzhyun.StkPoolOuput}
    */
   public static final class StkPoolOuput extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:dzhyun.StkPoolOuput)
-      StkPoolOuputOrBuilder {
+      com.google.protobuf.GeneratedMessage
+      implements StkPoolOuputOrBuilder {
     // Use StkPoolOuput.newBuilder() to construct.
     private StkPoolOuput(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
@@ -1694,9 +1688,8 @@ public final class DzhyunStockpool {
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              ceWenShiJian_ = bs;
+              ceWenShiJian_ = input.readBytes();
               break;
             }
             case 18: {
@@ -1750,6 +1743,7 @@ public final class DzhyunStockpool {
     }
 
     private int bitField0_;
+    // required string CeWenShiJian = 1;
     public static final int CEWENSHIJIAN_FIELD_NUMBER = 1;
     private java.lang.Object ceWenShiJian_;
     /**
@@ -1792,6 +1786,7 @@ public final class DzhyunStockpool {
       }
     }
 
+    // repeated .dzhyun.StkPool Pooldata = 2;
     public static final int POOLDATA_FIELD_NUMBER = 2;
     private java.util.List<com.dzhyun.proto.DzhyunStockpool.StkPool> pooldata_;
     /**
@@ -1834,8 +1829,7 @@ public final class DzhyunStockpool {
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
+      if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasCeWenShiJian()) {
         memoizedIsInitialized = 0;
@@ -1959,9 +1953,8 @@ public final class DzhyunStockpool {
      * Protobuf type {@code dzhyun.StkPoolOuput}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:dzhyun.StkPoolOuput)
-        com.dzhyun.proto.DzhyunStockpool.StkPoolOuputOrBuilder {
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.dzhyun.proto.DzhyunStockpool.StkPoolOuputOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.dzhyun.proto.DzhyunStockpool.internal_static_dzhyun_StkPoolOuput_descriptor;
@@ -2128,6 +2121,7 @@ public final class DzhyunStockpool {
       }
       private int bitField0_;
 
+      // required string CeWenShiJian = 1;
       private java.lang.Object ceWenShiJian_ = "";
       /**
        * <code>required string CeWenShiJian = 1;</code>
@@ -2141,12 +2135,9 @@ public final class DzhyunStockpool {
       public java.lang.String getCeWenShiJian() {
         java.lang.Object ref = ceWenShiJian_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            ceWenShiJian_ = s;
-          }
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          ceWenShiJian_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -2204,6 +2195,7 @@ public final class DzhyunStockpool {
         return this;
       }
 
+      // repeated .dzhyun.StkPool Pooldata = 2;
       private java.util.List<com.dzhyun.proto.DzhyunStockpool.StkPool> pooldata_ =
         java.util.Collections.emptyList();
       private void ensurePooldataIsMutable() {
@@ -2345,8 +2337,7 @@ public final class DzhyunStockpool {
           java.lang.Iterable<? extends com.dzhyun.proto.DzhyunStockpool.StkPool> values) {
         if (pooldataBuilder_ == null) {
           ensurePooldataIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, pooldata_);
+          super.addAll(values, pooldata_);
           onChanged();
         } else {
           pooldataBuilder_.addAllMessages(values);
@@ -2455,17 +2446,17 @@ public final class DzhyunStockpool {
     // @@protoc_insertion_point(class_scope:dzhyun.StkPoolOuput)
   }
 
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_dzhyun_Stock_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_dzhyun_Stock_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_dzhyun_StkPool_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_dzhyun_StkPool_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_dzhyun_StkPoolOuput_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -2487,35 +2478,35 @@ public final class DzhyunStockpool {
       "n.StkPoolB\022\n\020com.dzhyun.proto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
+      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+        public com.google.protobuf.ExtensionRegistry assignDescriptors(
+            com.google.protobuf.Descriptors.FileDescriptor root) {
+          descriptor = root;
+          internal_static_dzhyun_Stock_descriptor =
+            getDescriptor().getMessageTypes().get(0);
+          internal_static_dzhyun_Stock_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_dzhyun_Stock_descriptor,
+              new java.lang.String[] { "Price", "Time", "Obj", });
+          internal_static_dzhyun_StkPool_descriptor =
+            getDescriptor().getMessageTypes().get(1);
+          internal_static_dzhyun_StkPool_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_dzhyun_StkPool_descriptor,
+              new java.lang.String[] { "Text", "Stk", });
+          internal_static_dzhyun_StkPoolOuput_descriptor =
+            getDescriptor().getMessageTypes().get(2);
+          internal_static_dzhyun_StkPoolOuput_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_dzhyun_StkPoolOuput_descriptor,
+              new java.lang.String[] { "CeWenShiJian", "Pooldata", });
+          return null;
+        }
+      };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_dzhyun_Stock_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_dzhyun_Stock_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_dzhyun_Stock_descriptor,
-        new java.lang.String[] { "Price", "Time", "Obj", });
-    internal_static_dzhyun_StkPool_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_dzhyun_StkPool_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_dzhyun_StkPool_descriptor,
-        new java.lang.String[] { "Text", "Stk", });
-    internal_static_dzhyun_StkPoolOuput_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_dzhyun_StkPoolOuput_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_dzhyun_StkPoolOuput_descriptor,
-        new java.lang.String[] { "CeWenShiJian", "Pooldata", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
